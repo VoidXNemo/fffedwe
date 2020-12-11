@@ -217,11 +217,9 @@ client.on('message', message =>{
     } else if(command === 'blursedimages'){
         client.commands.get('blursedimages').execute(message, args);
     } else if(command === 'leet'){
-        client.commands.get('leetspeak').execute(message, args);
+        client.commands.get('leet').execute(message, args);
     } else if(command === 'crypto'){
         client.commands.get('crypto').execute(message, args);
-    } else if(command === 'doomsday'){
-        client.commands.get('doomsday').execute(message, args);
     } else if(command === 'proxylist'){
         client.commands.get('proxylist').execute(message, args);
     }
