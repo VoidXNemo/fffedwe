@@ -208,6 +208,8 @@ client.on('message', message =>{
         client.commands.get('anal').execute(message, args);
     } else if(command === 'meme'){
         client.commands.get('meme').execute(message, args);
+    } else if(command === 'tihi'){
+        client.commands.get('tihi').execute(message, args);
     }
 });
  
