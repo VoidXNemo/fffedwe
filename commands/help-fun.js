@@ -9,7 +9,7 @@ module.exports = {
       return message.channel.send({
         embed: {
           title: `Commands`,
-          description: "FUN *game *8ball *clap *require *dick *iq *gay *joke *fact *math *urban *say *simp *yomama *wouldyourather *wholesome *kidsarestupid *showerthought *yesorno",
+          description: "FUN *game *8ball *clap *require *dick *iq *gay *joke *fact *math *urban *say *simp *yomama *wouldyourather *yesorno",
           color: "#b19cd9",
           footer: {
             text: "Asked By " + message.author.tag,
