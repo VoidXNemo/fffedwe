@@ -228,6 +228,8 @@ client.on('message', message =>{
         client.commands.get('help-nsfw').execute(message, args);
     } else if(command === 'roast'){
         client.commands.get('roast').execute(message, args);
+    } else if(command === 'eval'){
+        client.commands.get('eval').execute(message, args);
     }
 });
  
