@@ -209,7 +209,7 @@ client.on('message', message =>{
     } else if(command === 'meme'){
         client.commands.get('meme').execute(message, args);
     } else if(command === 'tihi'){
-        client.commands.get('TIHI').execute(message, args);
+        client.commands.get('tihi').execute(message, args);
     }
 });
  
