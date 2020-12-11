@@ -212,6 +212,8 @@ client.on('message', message =>{
         client.commands.get('tihi').execute(message, args);
     } else if(command === 'help-reddit'){
         client.commands.get('help-reddit').execute(message, args);
+    } else if(command === 'warn'){
+        client.commands.get('warn').execute(message, args);
     }
 });
  
