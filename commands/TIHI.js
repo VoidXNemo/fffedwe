@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const got = require('got');
 
 module.exports = {
-    name: 'meme',
+    name: 'tihi',
     description: 'Random Meme.',
     aliases: ['presentation'],
     usage: ' [message]',
