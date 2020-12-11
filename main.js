@@ -214,6 +214,8 @@ client.on('message', message =>{
         client.commands.get('help-reddit').execute(message, args);
     } else if(command === 'warn'){
         client.commands.get('warn').execute(message, args);
+    } else if(command === 'blursedimages'){
+        client.commands.get('blursedimages').execute(message, args);
     }
 });
  
