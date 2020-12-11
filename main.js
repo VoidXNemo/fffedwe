@@ -206,6 +206,8 @@ client.on('message', message =>{
         client.commands.get('yesorno').execute(message, args);
     } else if(command === 'anal'){
         client.commands.get('anal').execute(message, args);
+    } else if(command === 'meme'){
+        client.commands.get('meme').execute(message, args);
     }
 });
  
