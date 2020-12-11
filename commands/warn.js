@@ -1,5 +1,4 @@
-const { Message, MessageEmbed } = require('discord.js')
-const db = require('../util/Database.js');
+var Discord = require('discord.js');
 
 module.exports = {
     name: 'warn',
@@ -10,38 +9,43 @@ module.exports = {
     args: 0,
     catergory: 'Others',
     async execute(message, args, client) {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('You do not have permissions to use this command.')
-        const user = message.mentions.members.first() || message.guild.members.cache.get(args[0])
-        if(!user) return message.channel.send('User not found.')
-        const reason = args.slice(1).join(" ")
-        db.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
-            if(err) throw err;
-            if(!data) {
-                data = new db({
-                    guildid: message.guild.id,
-                    user : user.user.id,
-                    content : [
-                        {
-                            moderator : message.author.id,
-                            reason : reason
-                        }
-                    ]
-                })
-            } else {
-                const obj = {
-                    moderator: message.author.id,
-                    reason : reason
-                }
-                data.content.push(obj)
-            }
-            data.save()
-        });
-        user.send(new MessageEmbed()
-            .setDescription(`You have been warned for ${reason}`)
-            .setColor("b19cd9")
-        )
-        message.channel.send(new MessageEmbed()
-            .setDescription(`Warned ${user} for ${reason}`).setColor('BLUE')
-        )
+        if(!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You can\'t use that!');
+
+        var user = msg.mentions.users.first();
+        if(!user) return msg.reply('You didn\'t mention anyone!');
+    
+        var member;
+    
+        try {
+            member = await msg.guild.members.fetch(user);
+        } catch(err) {
+            member = null;
+        }
+    
+        if(!member) return msg.reply('They aren\'t in the server!');
+    
+        var reason = args.splice(1).join(' ');
+        if(!reason) return msg.reply('You need to give a reason!');
+    
+        var channel = msg.guild.channels.cache.find(c => c.name === 'potato');
+    
+        var log = new Discord.MessageEmbed()
+        .setTitle('User Warned')
+        .addField('User:', user, true)
+        .addField('By:', msg.author, true)
+        .addField('Reason:', reason)
+        channel.send(log);
+    
+        var embed = new Discord.MessageEmbed()
+        .setTitle('You were warned!')
+        .setDescription(reason);
+    
+        try {
+            user.send(embed);
+        } catch(err) {
+            console.warn(err);
+        }
+    
+        msg.channel.send(`**${user}** has been warned by **${msg.author}**!`);
     }
 }
