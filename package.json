@@ -32,6 +32,7 @@
     "fs": "0.0.1-security",
     "genius-lyrics-api": "^3.0.3",
     "http": "0.0.1-security",
+    "insult": "0.0.3",
     "level": "^6.0.1",
     "lyrics-finder": "^21.4.0",
     "lyrics.js": "^0.4.2",

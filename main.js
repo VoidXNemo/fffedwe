@@ -226,6 +226,8 @@ client.on('message', message =>{
         client.commands.get('hentai').execute(message, args);
     } else if(command === 'help-nsfw'){
         client.commands.get('help-nsfw').execute(message, args);
+    } else if(command === 'roast'){
+        client.commands.get('roast').execute(message, args);
     }
 });
  

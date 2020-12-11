@@ -1,25 +1,30 @@
+const Util = require('../util/MitUtil.js');
+const insulter = require('insult');
+
 module.exports = {
-  name: 'help-fun',
-  description: 'Shows List Of Commands',
+  name: 'roast',
+  description: "The bot will try to reply with a random insult",
+  aliases: ['insult', 'roast'],
+  usage: '',
   cooldown: 2,
-  args: -1,
+  args: 0,
   catergory: 'Fun',
   async execute(message, args, client) {
     try {
+      let Message = `${insulter.Insult()}`;
       return message.channel.send({
         embed: {
-          title: `Commands`,
-          description: "FUN *game *8ball *clap *require *dick *iq *gay *joke *fact *math *urban *say *simp *yomama *wouldyourather *yesorno *leet *crypto *proxylist *roast",
+          title: "Insult Machine",
+          description: Message,
           color: "#b19cd9",
           footer: {
-            text: "Asked By " + message.author.tag,
+            text: "Requested by " + message.author.tag,
             icon_url: message.author.displayAvatarURL()
           },
           timestamp: new Date()
         }
       });
-      }
-
+    }
     catch (err) {
       console.log(err);
       return message.reply(`Oh no, an error occurred. Try again later!`);
