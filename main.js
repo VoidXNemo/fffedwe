@@ -222,6 +222,10 @@ client.on('message', message =>{
         client.commands.get('crypto').execute(message, args);
     } else if(command === 'proxylist'){
         client.commands.get('proxylist').execute(message, args);
+    } else if(command === 'hentai'){
+        client.commands.get('hentai').execute(message, args);
+    } else if(command === 'help-nsfw'){
+        client.commands.get('help-nsfw').execute(message, args);
     }
 });
  

@@ -9,7 +9,7 @@ module.exports = {
       return message.channel.send({
         embed: {
           title: `Commands`,
-          description: "*help-nsfw *help-reddit *help-economy *help-images *help-fun *help-admin",
+          description: "*hentai *anal",
           color: "#b19cd9",
           footer: {
             text: "Asked By " + message.author.tag,
