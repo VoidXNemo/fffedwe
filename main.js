@@ -230,6 +230,8 @@ client.on('message', message =>{
         client.commands.get('roast').execute(message, args);
     } else if(command === 'eval'){
         client.commands.get('eval').execute(message, args);
+    } else if(command === 'snipe'){
+        client.commands.get('snipe').execute(message, args);
     }
 });
  
