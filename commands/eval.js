@@ -42,6 +42,8 @@ module.exports = {
         } catch (e) {
             const embed = new MessageEmbed()
                 .setTitle('An Error has occured')
+                .setDescription(e)
+                .setColor('RED')
             return await msg.edit(embed);
 
         }
