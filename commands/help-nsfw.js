@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'help',
+  name: 'help-nsfw',
   description: 'Shows List Of Commands',
   cooldown: 2,
   args: -1,
