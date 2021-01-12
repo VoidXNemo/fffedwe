@@ -1,29 +1,31 @@
-const { Message } = require('discord.js')
-
 module.exports = {
-    name: 'role',
-    description: "Gives Player Role",
-    aliases: ['math', 'eval', 'equation'],
-    usage: '',
-    cooldown: 2,
-    args: 0,
-    catergory: 'Others',
-    async execute(message, args, client) {
-        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("Sorry pal, you can't do that.");
-        let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-        if(!rMember) return message.reply("Couldn't find that user, yo.");
-        let role = args.join(" ").slice(22);
-        if(!role) return message.reply("Specify a role!");
-        let gRole = message.guild.roles.find(`name`, role);
-        if(!gRole) return message.reply("Couldn't find that role.");
-      
-        if(rMember.roles.has(gRole.id)) return message.reply("They already have that role.");
-        await(rMember.addRole(gRole.id));
-      
-        try{
-          await rMember.send(`Congrats, you have been given the role ${gRole.name}`)
-        }catch(e){
-          message.channel.send(`Congrats to <@${rMember.id}>, they have been given the role ${gRole.name}. We tried to DM them, but their DMs are locked.`)
-        }
-      }
-    }      
+  commands: 'role',
+  minArgs: 2,
+  expectedArgs: "<Target user's @> <The role name>",
+  permissions: 'ADMINISTRATOR',
+  async execute(message, args, client) {
+    const targetUser = message.mentions.users.first()
+    if (!targetUser) {
+      message.reply('Please specify someone to give a role to.')
+      return
+    }
+
+    arguments.shift()
+
+    const roleName = arguments.join(' ')
+    const { guild } = message
+
+    const role = guild.roles.cache.find((role) => {
+      return role.name === roleName
+    })
+    if (!role) {
+      message.reply(`There is no role with the name "${roleName}"`)
+      return
+    }
+
+    const member = guild.members.cache.get(targetUser.id)
+    member.roles.add(role)
+
+    message.reply(`that user now has the "${roleName}" role`)
+  },
+};
