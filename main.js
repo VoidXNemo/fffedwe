@@ -62,12 +62,6 @@ client.on('message', message =>{
         client.commands.get('purge').execute(message, args);
     } else if(command === 'mute'){
         client.commands.get('mute').execute(message, args);
-    } else if(command === 'role'){
-        client.commands.get('role').execute(message, args);
-    } else if(command === 'unmute'){
-        client.commands.get('unmute').execute(message, args);
-    } else if(command === 'unrole'){
-        client.commands.get('unrole').execute(message, args);
     } else if(command === 'yomama'){
         client.commands.get('yomama').execute(message, args);
     } else if(command === 'wouldyourather'){
